@@ -5,14 +5,14 @@
 ## 🇬🇧 English
 
 ### Description
-SQL Injection is a critical web application vulnerability that allows attackers to manipulate database queries and gain unauthorized access to sensitive data.
+SQL Injection is a critical web application vulnerability that allows attackers to manipulate SQL queries and gain unauthorized access to sensitive database data.
 
 ---
 
 ### Explanation
-This vulnerability occurs because user input is directly embedded into SQL queries without proper sanitization or validation.
+This vulnerability occurs when user input is directly incorporated into SQL queries without proper validation or sanitization.
 
-As a result, attackers can alter the query logic and execute arbitrary SQL commands, leading to unauthorized access, data leakage, or complete database compromise.
+As a result, attackers can modify the intended query logic, execute arbitrary SQL commands, and retrieve or manipulate sensitive data.
 
 ---
 
@@ -32,17 +32,18 @@ As a result, attackers can alter the query logic and execute arbitrary SQL comma
 ### Exploitation Steps
 1. Intercepted HTTP request using Burp Suite  
 2. Identified vulnerable parameter (id)  
-3. Tested basic payload (' OR '1'='1')  
-4. Confirmed SQL Injection vulnerability  
-5. Performed UNION-based injection  
+3. Injected test payload to confirm SQL Injection (' OR '1'='1')  
+4. Verified vulnerability based on server response  
+5. Performed UNION-based SQL Injection  
 6. Extracted usernames and password hashes from the database  
 
 ---
 
 ### Result
-- Successfully bypassed authentication logic  
-- Extracted multiple user records  
-- Retrieved password hashes from database  
+- Successfully bypassed application logic  
+- Retrieved multiple user records  
+- Extracted password hashes  
+- Demonstrated database-level data exposure  
 
 ---
 
@@ -55,14 +56,22 @@ Example:
 ---
 
 ### Impact
-An attacker can extract sensitive data such as usernames and passwords, leading to full account takeover and database compromise.
+An attacker can extract sensitive data such as usernames and passwords, bypass authentication mechanisms, and potentially gain full control over the database.
+
+---
+
+### Mitigation
+- Use prepared statements (parameterized queries)  
+- Implement proper input validation and sanitization  
+- Apply least privilege principle for database access  
 
 ---
 
 ### Tools Used
 - Burp Suite  
 - DVWA (Damn Vulnerable Web Application)  
-- Kali Linux
+- Kali Linux  
+
 
 - ## 📸 Proof of Exploitation
 
@@ -84,14 +93,14 @@ An attacker can extract sensitive data such as usernames and passwords, leading 
 ## 🇹🇷 Türkçe
 
 ### Açıklama
-SQL Injection, saldırganların veritabanı sorgularını manipüle ederek yetkisiz verilere erişmesini sağlayan kritik bir web güvenlik zafiyetidir.
+SQL Injection, saldırganların SQL sorgularını manipüle ederek veritabanındaki hassas verilere yetkisiz erişim sağlamasına olanak tanıyan kritik bir web uygulaması zafiyetidir.
 
 ---
 
 ### Detay
-Bu zafiyet, kullanıcıdan alınan verinin herhangi bir filtreleme veya doğrulama yapılmadan SQL sorgularına dahil edilmesinden kaynaklanır.
+Bu zafiyet, kullanıcıdan alınan verinin herhangi bir doğrulama veya filtreleme yapılmadan SQL sorgularına dahil edilmesinden kaynaklanır.
 
-Bu sayede saldırganlar sorgu mantığını değiştirerek hassas verilere erişebilir veya veritabanını tamamen ele geçirebilir.
+Bu sayede saldırganlar sorgu mantığını değiştirerek veritabanı üzerinde yetkisiz işlemler gerçekleştirebilir.
 
 ---
 
@@ -103,25 +112,26 @@ Bu sayede saldırganlar sorgu mantığını değiştirerek hassas verilere eriş
 ---
 
 ### Kullanılan Payloadlar
-- ' OR '1'='1'-- -  
-- ' UNION SELECT user, password FROM users-- -  
+- ' OR '1'='1'-- -
+- ' UNION SELECT user, password FROM users-- -
 
 ---
 
 ### İstismar Adımları
 1. Burp Suite ile HTTP isteği yakalandı  
 2. Zafiyetli parametre (id) tespit edildi  
-3. Temel payload (' OR '1'='1') test edildi  
-4. SQL Injection zafiyeti doğrulandı  
-5. UNION tabanlı saldırı gerçekleştirildi  
-6. Veritabanından kullanıcı adı ve şifre hash'leri çekildi  
+3. Test payload (' OR '1'='1') enjekte edilerek zafiyet doğrulandı  
+4. Sunucu yanıtı analiz edilerek SQL Injection doğrulandı  
+5. UNION tabanlı SQL Injection gerçekleştirildi  
+6. Veritabanından kullanıcı adı ve şifre hash'leri elde edildi  
 
 ---
 
 ### Sonuç
-- Kimlik doğrulama mantığı bypass edildi  
+- Uygulama mantığı bypass edildi  
 - Birden fazla kullanıcı verisi elde edildi  
-- Veritabanından şifre hash'leri çekildi  
+- Şifre hash'leri çekildi  
+- Veritabanı seviyesinde veri sızıntısı gösterildi  
 
 ---
 
@@ -129,12 +139,19 @@ Bu sayede saldırganlar sorgu mantığını değiştirerek hassas verilere eriş
 MD5 ile hashlenmiş şifreler tespit edildi ve yaygın wordlist kullanılarak çözüldü.
 
 Örnek:  
-5f4dcc3b5aa765d61d8327deb882cf99 → password  
+5f4dcc3b5aa765d61d8327deb882cf99 → password
 
 ---
 
 ### Etki
-Saldırgan, kullanıcı adı ve şifre gibi hassas verileri ele geçirerek hesapları tamamen ele geçirebilir ve veritabanına tam erişim sağlayabilir.
+Saldırgan, kullanıcı adı ve şifre gibi hassas verileri ele geçirerek kimlik doğrulama mekanizmalarını aşabilir ve veritabanı üzerinde tam kontrol sağlayabilir.
+
+---
+
+### Önlem
+- Prepared statement (parametreli sorgular) kullanımı  
+- Girdi doğrulama ve filtreleme uygulanması  
+- Veritabanı erişimlerinde minimum yetki prensibi  
 
 ---
 
