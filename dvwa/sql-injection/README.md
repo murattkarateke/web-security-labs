@@ -7,13 +7,21 @@
 ### Description
 SQL Injection allows attackers to retrieve and manipulate database data.
 
+### Explanation
+
+This vulnerability occurs because user input is not properly sanitized before being used in SQL queries.
+
+As a result, attackers can manipulate the query structure and gain unauthorized access to the database.
+
 ### Vulnerability Details
 - Type: SQL Injection
 - Severity: High
 - Impact: Full database access
 
-### Payload Used
-' OR '1'='1
+### Payloads Used
+
+- ' OR '1'='1
+- UNION SELECT user, password FROM users
 
 ### Exploitation Steps
 1. Intercepted request using Burp Suite
@@ -26,20 +34,50 @@ SQL Injection allows attackers to retrieve and manipulate database data.
 - Retrieved usernames
 - Retrieved password hashes (MD5)
 
+- ### Password Cracking
+
+Identified MD5 hashed passwords and cracked them using common wordlists.
+
+Example:
+5f4dcc3b5aa765d61d8327deb882cf99 → password
+
+
+---
+
+## 📸 Evidence
+
+### SQL Injection Result
+![SQL](SQL%20injection.png)
+
+### Database Dump
+![DB](database_dump.png)
+
+### Burp Suite Request
+![Burp](burpsuite.png)
+
+### Password Crack
+![Hash](hash_karma.png)
+
+---
+
+⚠️ All tests are performed in a controlled lab environment (DVWA).
 ---
 
 ## 🇹🇷 Türkçe
 
 ### Açıklama
-SQL Injection ile veritabanı verilerine erişim sağlandı.
+Bu zafiyet, kullanıcıdan alınan verinin SQL sorgularında kullanılmadan önce filtrelenmemesinden kaynaklanır.
+Bu durum, saldırganların sorgu yapısını değiştirmesine ve veritabanına yetkisiz erişim sağlamasına imkan tanır.
 
 ### Zafiyet Detayları
 - Tür: SQL Injection
 - Seviye: Yüksek
 - Etki: Tam veritabanı erişimi
 
-### Kullanılan Payload
-' OR '1'='1
+### Kullanılan Payloadlar
+
+- ' OR '1'='1
+- UNION SELECT user, password FROM users
 
 ### Yapılan Adımlar
 1. Burp Suite ile request yakalandı
@@ -52,9 +90,16 @@ SQL Injection ile veritabanı verilerine erişim sağlandı.
 - Kullanıcı adları elde edildi
 - MD5 hash'li şifreler elde edildi
 
+- ### Şifre Kırma
+
+MD5 ile hashlenmiş şifreler tespit edildi ve yaygın wordlist kullanılarak çözüldü.
+
+Örnek:
+5f4dcc3b5aa765d61d8327deb882cf99 → password
+
 ---
 
-## 📸 Evidence
+## 📸 Kanıtlar
 
 ### SQL Injection Result
 ![SQL](SQL%20injection.png)
