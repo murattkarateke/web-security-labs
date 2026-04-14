@@ -4,6 +4,9 @@
 
 ## 🇬🇧 English
 
+### Impact
+An attacker can extract sensitive data such as usernames and passwords, leading to full account compromise.
+
 ### Description
 SQL Injection allows attackers to retrieve and manipulate database data.
 
@@ -59,11 +62,18 @@ Example:
 ![Hash](hash_karma.png)
 
 ---
+### Tools Used
 
+- Burp Suite
+- DVWA
+- Kali Linux
 ⚠️ All tests are performed in a controlled lab environment (DVWA).
 ---
 
 ## 🇹🇷 Türkçe
+
+### Etki
+Saldırgan, kullanıcı adı ve şifre gibi hassas verileri ele geçirerek hesapları tamamen ele geçirebilir.
 
 ### Açıklama
 Bu zafiyet, kullanıcıdan alınan verinin SQL sorgularında kullanılmadan önce filtrelenmemesinden kaynaklanır.
@@ -101,7 +111,8 @@ MD5 ile hashlenmiş şifreler tespit edildi ve yaygın wordlist kullanılarak ç
 
 ## 📸 Kanıtlar
 
-### SQL Injection Result
+### SQL Injection Result (User Enumeration)
+
 ![SQL](SQL%20injection.png)
 
 ### Database Dump
@@ -113,4 +124,9 @@ MD5 ile hashlenmiş şifreler tespit edildi ve yaygın wordlist kullanılarak ç
 ### Password Crack
 ![Hash](hash_karma.png)
 
+### Kullanılan Araçlar
+
+- Burp Suite
+- DVWA
+- Kali Linux
 ⚠️ All tests are performed in a controlled lab environment (DVWA).
