@@ -51,3 +51,21 @@ SQL Injection ile veritabanı verilerine erişim sağlandı.
 ### Sonuç
 - Kullanıcı adları elde edildi
 - MD5 hash'li şifreler elde edildi
+
+---
+
+## 📸 Evidence
+
+### SQL Injection Result
+![SQL](SQL%20injection.png)
+
+### Database Dump
+![DB](database_dump.png)
+
+### Burp Suite Request
+![Burp](burpsuite.png)
+
+### Password Crack
+![Hash](hash_karma.png)
+
+⚠️ All tests are performed in a controlled lab environment (DVWA).
